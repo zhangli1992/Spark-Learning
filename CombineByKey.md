@@ -1,3 +1,4 @@
+来源:https://cloud.tencent.com/developer/article/1043490
 #### 1.背景:
 combineByKey()是一种最常用对基于键进行聚合对函数。大多数基于键聚合的函数都是用它实现。跟aggregate()一样，combineByKey()可以让用户返回与输入数据类
 型不同的返回值。
