@@ -1,6 +1,16 @@
 combineByKey()是一种最常用对基于键进行聚合对函数。大多数基于键聚合的函数都是用它实现。跟aggregate()一样，combineByKey()可以让用户返回与输入数据类
 型不同的返回值。
 其定义如下:
-```
-def 
-```
+def combineByKey[C](
+    //在找到给定分区中第一次碰到的key（在RDD元素中）时被调用。此方法为这个key初始化一个累加器。
+    createCombiner : V => C,
+    //当累加器已经存在的时候（也就是上面那个key的累加器）调用。
+    mergeValue : (C,V) => C,
+    // 如果哪个key跨多个分区，该参数就会被调用。
+    mergeCombiners : (C,C) => C,
+    partitioner : Partitioner,
+    mapSideCombine : Boolean = true,
+    serializer : Serializer = null
+    ): RDD[(K,C)] = { //实现略 }
+函数式风格与命令式风格不同之处在于它说明了代码做了什么（what to do），而不是怎么做(how to do)。combineByKey函数主要接受了三个函数作为参数，分别为
+createCombiner、mergeValue、mergeCombiners。这三个函数足以说明它究竟做了什么。理解了这三个函数，就可以很好地理解combineByKey。
