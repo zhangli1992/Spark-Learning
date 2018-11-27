@@ -26,7 +26,7 @@ createCombiner、mergeValue、mergeCombiners。这三个函数足以说明它究
 3. 由于每个分区都是独立处理的，因此对于同一个键可以有多个累加器。如果有两个或者更多的分区都有对应同一个键的累加器，就需要使用用户提供的
    mergeCombiners()方法将各个分区的结果进行合并。
 
-3.示例:
+#### 3.示例:
 // 关闭 spark-shell INFO/DEBUG 调试信息
 ```scala
 scala> sc.setLogLevel("WARN")
